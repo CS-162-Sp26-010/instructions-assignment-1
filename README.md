@@ -1,4 +1,4 @@
-# Getting Started with Assignment 1: Git, GitHub, and “Hello, World!”
+# Instructions for Assignment 1: Git, GitHub, and “Hello, World!”
 
 (If you don’t have any experience with shells / SSH, then it’s strongly
 recommended that you wait until completing lab 1 before doing this
@@ -221,17 +221,17 @@ starter code for assignments and labs. Complete the following steps:
     If you can't find it there either, please email the TA mailer or stop
     by office hours for help.
 
-3.  You should now be on the main page of your GitHub repository, which should
-    look similar to this one. You should see some additional assignment
-    instructions (ignore them for now; we'll get to them momentarily).
+3.  You should now be on the main page of your GitHub repository. It'll look
+    similar to this repository page, but without all the assignment
+    instructions.
 
     > **Note:** This new repository is owned by you. However, it's nested
     within our class’s GitHub Organization, meaning that the TAs and
     instructor have access to it as well. Other students do not have
     access to it.
 
-    On your generated repository's main page, you should see a green button
-    that says “`<> Code`”. Click that button.
+    On this page, you should see a green button that says “`<> Code`”. Click
+    that button.
 
     ![github code button](res/code-button.png)
 
@@ -283,9 +283,191 @@ starter code for assignments and labs. Complete the following steps:
     currently in; it could just be that you're not inside your assignment
     directory.
 
-You're not done yet! The remaining instructions for this assignment can be
-found on the main page of your generated GitHub repository. Continue with
-those instructions to complete the assignment and submit it to Gradescope.
+## Uploading changes to GitHub
+
+Complete the following steps:
+
+1.  The purpose of a VCS like Git is to track changes that are made to a
+    digital project (i.e., a repository). Let’s make some changes to
+    this repository. Use `vim` to open `assignment1.py`, which was
+    included in the repository when you cloned it via `git clone`.
+
+2.  Complete the required action items outlined in the `# TODO` code
+    comments.
+
+3.  Some context: Git does not automatically track all changes made to
+    files in the repository. Rather, you must *tell* Git that you’ve
+    made some changes that you’d like it to track. Git keeps track of
+    changes made to the repository in the form of so-called “commits”,
+    sometimes referred to as “snapshots.” A commit, or snapshot, is
+    essentially a saved copy of the entire repository at a given point
+    in time.
+
+    However, sometimes, you’ll find yourself having modified several
+    files in a repository and only wanting to include *some* of those
+    changes in the next commit. For this reason, creating a new commit
+    in a Git repository requires two separate steps: 1) staging modified
+    files, which tells Git that you’d like to include their changes in
+    the next commit; and 2) creating the commit itself.
+
+4.  First, type `git status` and press enter. It should display
+    `assignment1.py` in red, stating that it’s been modified. This is
+    the real purpose of `git status`—to tell you which files in the
+    repository have been modified, staged, and / or committed.
+
+    ![git status example](res/git-status-modified.png)
+
+5.  Stage `assignment1.py` by running the following command:
+
+    ```
+    git add assignment1.py
+    ```
+
+    > **TIP:**
+    > You can alternatively stage all modified files in the
+    entire repository via a single command: `git add -A`).
+
+6.  Run `git status` again. It should display `assignment1.py` in green
+    now, stating that its modifications are staged to be included in the
+    next commit (if it’s still red / modified rather than green /
+    staged, then you must have made a mistake when staging it in the
+    previous step).
+
+    ![git status example](res/git-status-staged.png)
+
+7.  Create a new commit via `git commit -m "<MESSAGE>"`. Replace
+    `<MESSAGE>` with a brief (e.g., one-sentence) message describing the
+    changes that you made to the staged files. Make sure to keep the
+    quotation marks (but get rid of the angle brackets). For example:
+
+    ```
+    git commit -m "Update assignment1.py to print Hello, World to the terminal"
+    ```
+
+8.  Run `git status` again. It should no longer display
+    `assignment1.py`. That’s because all of its modifications have been
+    committed (files displayed in red have unstaged modifications; files
+    displayed in green have staged modifications; and files that aren’t
+    displayed at all have not been modified since they were last
+    included in a commit).
+
+    ![git status example](res/git-status-committed.png)
+
+9.  At this point, you’ve created a new commit containing your
+    modifications on the ENGR servers. However, GitHub is not yet aware
+    of that commit. When you downloaded the repository via `git clone`,
+    that created a local *copy* of your assignment repository on the
+    ENGR servers. You’ve just created a new commit in that copy of the
+    repository, but you haven’t created any new commits in the other
+    copy of the repository stored on GitHub.
+
+    The last step, then, is to upload your new commit(s) to GitHub. To
+    do this, simply execute `git push`. After a moment, it should say
+    that your commit(s) were successfully pushed (uploaded) to GitHub.
+
+10. Navigate back to your repository’s GitHub page in your browser and
+    refresh the page. If you’ve already exited out, you can navigate
+    back to it in one of a couple ways: a) navigate to github.com
+    $\rightarrow$ profile icon in the topright corner $\rightarrow$ Your
+    Organizations $\rightarrow$ click on our class’s organization
+    $\rightarrow$ click on “Repositories” $\rightarrow$ find your
+    assignment 1 repository and click on it; or b) click the link in
+    this assignment’s Canvas page to accept the assignment on GitHub
+    Classroom (just like you did earlier) and follow the on-screen steps
+    to navigate back to your repository.
+
+11. Click on `assignment1.py` in your GitHub repository to view its
+    contents.
+
+    ![assignment1.py link](res/assignment1py.png)
+
+    The changes that you made to the file via `vim` earlier should be
+    reflected in what you see on GitHub. If not, then you must have made
+    a mistake in the one of the previous steps.
+
+## Gradescope
+
+The final step is to submit your GitHub repository to Gradescope. 
+
+1. Access Gradescope from the Canvas assignment page. You should be able to do this by clicking the button that says "Load assignment in a new window". If you don't see that button, click "Gradescope" on the Canvas side bar.
+
+2. Click on Assignment 1 in Gradescope if you aren't already there.
+
+3. Click on the "Upload Submission" button.
+
+4. Since this is the first GitHub repository you've ever uploaded to this course's Gradescope site, you'll need to give Gradescope permissions to access your GitHub repositories. You should see a "Connect to GitHub" button. Click the button.
+
+    ![Submit Assignment dialog](res/submit-assignment.png)
+
+5. You will be taken to an Authorization page, which asks for permission to access your account. If you are part of multiple organizations, it will show them all. In general it is wise to restrict permissions as much as you can; you only need to give it permissions for our class's organization. Here's a screenshot from a past term:
+
+    ![GitHub authorize Gradescope page](res/authorize-gradescope-page.png)
+
+6. You should be directed back to Gradescope. Now when you upload a submission, you should see a list of repositories to select. Be sure to choose the correct repository for the assignment, or the tests won't pass, and you'll get a terrible grade (note: your repository name will be different than the one in the below screenshot).
+
+    ![Gradescope select repositories](res/select-repository.png)
+
+7. "Branching" is an advanced feature in Git to allow multiple features to be built without affecting each other. We won't use this in CS-162, so select the `main` branch.
+
+8. Click the "Upload" button and wait for the autograder to complete. It will download code from your repository and try running some automated tests; you will also receive an email when your assignment is submitted. While the autograder running, you will see a message that looks like:
+
+    ![Autograder not finished](res/autograder-not-finished.png)
+
+9. If everything went well, you should eventually see test results, and hopefully they all passed:
+
+    ![Tests passed screenshot](res/tests-passed.png)
+
+10. If things didn't go well, you may see some error output and / or test failures. Don't worry---you can make changes to your code and re-submit your work as many times as you need until the deadline. If you make changes to your code, you'll need to stage and commit those changes, push the new commit(s) back to GitHub, and re-submit your repository to Gradescope, as you did in the previous steps.
+
+    Error outputs will display *very* detailed messages, and you aren't expected to understand it all right now. This course will teach you how to interpret these messages to help you debug your code. For example, if your `test_assignment1_prints_hello_world` test failed, it's likely because you haven't changed `assignment1.py` or because you haven't yet pushed your changes to GitHub. Gradescope can only see changes that have been pushed to your repository in GitHub. Check your repository (see the [verifying your work](#verifying-your-work) section) to ensure you uploaded your changes to GitHub. Once you have made your changes and pushed them to GitHub, you can re-upload them to Gradescope and see if it fixes the tests.
+
+    Here's an example of what an error output might look like:
+
+    ![Tests failed screenshot](res/tests-failed.png)
+
+11. Reach out or come to office hours if you are having trouble with anything.
+
+## Verifying your work
+
+That’s technically all you have to do, but I strongly recommend
+completing the following steps to verify that your submission went
+through properly, especially for assignments with components that
+are graded manually by a TA rather than automatically by the tests
+in Gradescope:
+
+1.  Navigate to your assignment repository in GitHub (the one you just
+    submitted to Gradescope).
+
+2.  Copy the repository’s SSH URL via the green “`<> Code`” button.
+
+3.  Create a new, temporary directory somewhere on the ENGR servers
+    (e.g., `temp`). Navigate into that directory using `cd`.
+
+4.  Use `git clone <paste SSH URL here>` to create a fresh clone the
+    latest commit of your assignment repository. Find the newly cloned
+    directory via `ls` and navigate into it via `cd`.
+
+5.  Test your program and verify that it works as intended.
+
+6.  Use `cd` to navigate back out to where you created the temporary
+    directory (`temp`, or whatever you named it). You can probably do
+    this via `cd ../../`. Then delete the temporary directory that you
+    just created (e.g., `rm -r temp`). You don’t have to delete the temporary
+    directory, but it’s not a great idea to keep multiple clones of the same
+    repository around unless you’re skilled with Git. Otherwise, if you
+    accidentally make independent changes to the repository from within each
+    clone and then try to push all those changes, you can encounter Git
+    conflicts and will have to spend time merging them.
+
+## Rubric
+
+- (10 pts) Assignment repo has been uploaded to Gradescope
+- (20 pts) Executing the assignment1.py script prints "Hello, World!" to the
+    terminal 
+
+## Submitting your work
+
+1. Once you have completed all the sections correctly and see passing tests on Gradescope, there is nothing else you need to do.
 
 # Acknowledgements
 author: Alexander Guyer (<guyera@oregonstate.edu>), CS 162
